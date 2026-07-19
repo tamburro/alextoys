@@ -63,16 +63,25 @@
       text-shadow: 0 0 18px rgba(207, 224, 216, 0.98) !important;
     }
     @media (max-width: 860px) {
+      /* Scrim suave — o painel de vidro da copy garante a leitura */
       .sw-copylayer::before {
         width: 100% !important;
+        height: 55% !important;
         background: linear-gradient(0deg,
-          var(--sw-bg) 14%,
-          color-mix(in srgb, var(--sw-bg) 82%, transparent) 52%,
+          color-mix(in srgb, var(--sw-bg) 80%, transparent) 0%,
+          color-mix(in srgb, var(--sw-bg) 45%, transparent) 55%,
           transparent 100%) !important;
       }
-      /* Copy sobe para não colidir com o hint */
+      /* Copy sobe para não colidir com o hint + painel de vidro:
+         legível sobre qualquer frame do vídeo */
       .sw-copy {
         bottom: calc(clamp(88px, 15dvh, 148px) + env(safe-area-inset-bottom)) !important;
+        background: color-mix(in srgb, var(--sw-bg) 78%, transparent);
+        -webkit-backdrop-filter: blur(14px);
+        backdrop-filter: blur(14px);
+        padding: 18px 18px 20px;
+        border-radius: 20px;
+        border: 1px solid color-mix(in srgb, #fff 35%, transparent);
       }
       /* Hint compacto, horizontal, colado no rodapé */
       .sw-hint {
