@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Alex Toys! — Um mundo de brinquedos</title>
+  <meta name="description" content="Mergulhe na nostalgia. Role a página e voe pela loja de brinquedos Alex Toys!" />
+  <style>
+    :root, .sw-root {
+      --sw-bg: #cfe0d8;
+      --sw-ink: #2e2547;
+      --sw-ink-soft: #5c5375;
+      --sw-accent: #7c5fb8;
+      --sw-font-display: ui-rounded, "SF Pro Rounded", "Arial Rounded MT Bold", "Segoe UI", system-ui, sans-serif;
+    }
+    /* Tipografia "bubble": arredondada, pesada, com contorno escuro */
+    .sw-copy__title {
+      font-weight: 800;
+      -webkit-text-stroke: 1.5px #2e2547;
+      paint-order: stroke fill;
+      text-shadow: 3px 3px 0 rgba(46, 37, 71, .18);
+      letter-spacing: .01em;
+    }
+    .sw-copy__eyebrow { font-weight: 800; }
+    .sw-brand__name {
+      font-weight: 800;
+      font-size: 1.25rem;
+      -webkit-text-stroke: .8px #2e2547;
+      paint-order: stroke fill;
+    }
+    noscript .ns-scene { max-width: 900px; margin: 0 auto 48px; padding: 0 20px; text-align: center; }
+    noscript .ns-scene img { max-width: 100%; border-radius: 16px; }
+    noscript h2 { font-family: var(--sw-font-display); color: var(--sw-ink); }
+  </style>
+</head>
+<body>
+  <div id="top"></div>
+  <div id="world"></div>
+
+  <noscript>
+    <div class="ns-scene"><h2>Alex Toys! — Um mundo de brinquedos</h2><p>Mergulhe na nostalgia. Reviva a infância.</p><img src="assets/scene_1.webp" alt="A loja Alex Toys vista de cima" /></div>
+    <div class="ns-scene"><h2>Nostalgia de verdade</h2><p>Brinquedos clássicos que marcaram gerações — do carrinho de lata ao pelúcia vintage.</p><img src="assets/scene_2.webp" alt="Corredor de brinquedos clássicos" /></div>
+    <div class="ns-scene"><h2>Novidades e colecionáveis</h2><p>Lançamentos, peças raras e aquele item que faltava pra dar upgrade na sua coleção.</p><img src="assets/scene_3.webp" alt="Corredor de brinquedos modernos" /></div>
+    <div class="ns-scene"><h2>Comece sua coleção hoje</h2><p><a href="https://wa.me/5521967480201">WhatsApp: 21 96748-0201</a> · <a href="https://instagram.com/aspm.toys">@aspm.toys</a></p><img src="assets/scene_4.webp" alt="Balcão da loja com caixa registradora de brinquedo" /></div>
+  </noscript>
+
+  <script src="assets/scrub-engine.js"></script>
+  <script>
+    mountScrollWorld(document.getElementById('world'), {
+      brand: { name: 'Alex Toys!', href: '#top' },
+      cta: { label: 'Fale conosco', href: 'https://wa.me/5521967480201' },
+      hint: 'role para entrar',
+      diveScroll: 1.3,
+      crossfade: 0.08,
+      sections: [
+        {
+          id: 'hero', label: 'A Loja',
+          still: 'assets/scene_1.webp',
+          clip: 'assets/vid/leg_1.mp4',
+          accent: '#7c5fb8',
+          scroll: 1.6, linger: 0.4,
+          eyebrow: 'Alex Toys!',
+          title: 'Um mundo de brinquedos',
+          body: 'Mergulhe na nostalgia. Reviva a infância.',
+          tags: [],
+        },
+        {
+          id: 'classicos', label: 'Clássicos',
+          still: 'assets/scene_2.webp',
+          clip: 'assets/vid/leg_2.mp4',
+          accent: '#e8a23d',
+          eyebrow: 'Nostalgia de verdade',
+          title: 'Clássicos que marcaram gerações',
+          body: 'Brinquedos clássicos que marcaram gerações — do carrinho de lata ao pelúcia vintage.',
+          tags: ['Robôs de lata', 'Pelúcias vintage', 'Blocos de madeira'],
+        },
+        {
+          id: 'modernos', label: 'Modernos',
+          still: 'assets/scene_3.webp',
+          clip: 'assets/vid/leg_3.mp4',
+          accent: '#e06fa4',
+          eyebrow: 'Novidades e colecionáveis',
+          title: 'O item que faltava na sua coleção',
+          body: 'Lançamentos, peças raras e aquele item que faltava pra dar upgrade na sua coleção.',
+          tags: ['Lançamentos', 'Colecionáveis', 'Blind boxes'],
+        },
+        {
+          id: 'cta', label: 'Fale Conosco',
+          still: 'assets/scene_4.webp',
+          clip: 'assets/vid/leg_4.mp4',
+          accent: '#7c5fb8',
+          scroll: 1.6, linger: 0.45,
+          eyebrow: 'Chegou a sua vez',
+          title: 'Comece sua coleção hoje',
+          body: 'Chama a gente no WhatsApp ou segue o perfil pra não perder os lançamentos.',
+          tags: [],
+          cta: {
+            primary: { label: 'WhatsApp · 21 96748-0201', href: 'https://wa.me/5521967480201' },
+            secondary: { label: 'Instagram · @aspm.toys', href: 'https://instagram.com/aspm.toys' },
+          },
+        },
+      ],
+      connectors: [],
+    });
+  </script>
+</body>
+</html>

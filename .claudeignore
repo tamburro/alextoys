@@ -1,0 +1,9 @@
+node_modules/
+.next/
+.git/
+assets/vid/
+work/
+*.mp4
+*.png
+*.webp
+*.jpg
