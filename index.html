@@ -62,7 +62,7 @@
       font-weight: 600;
       text-shadow: 0 0 18px rgba(207, 224, 216, 0.98) !important;
     }
-    @media (max-width: 720px) {
+    @media (max-width: 860px) {
       .sw-copylayer::before {
         width: 100% !important;
         background: linear-gradient(0deg,
@@ -70,6 +70,20 @@
           color-mix(in srgb, var(--sw-bg) 82%, transparent) 52%,
           transparent 100%) !important;
       }
+      /* Copy sobe para não colidir com o hint */
+      .sw-copy {
+        bottom: calc(clamp(88px, 15dvh, 148px) + env(safe-area-inset-bottom)) !important;
+      }
+      /* Hint compacto, horizontal, colado no rodapé */
+      .sw-hint {
+        flex-direction: row !important;
+        gap: 8px !important;
+        padding: 8px 16px !important;
+        border-radius: 999px !important;
+        font-size: 0.66rem !important;
+        bottom: calc(12px + env(safe-area-inset-bottom)) !important;
+      }
+      .sw-hint i { display: none !important; }
     }
 
     /* Hint com pílula legível sobre qualquer cena */
