@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+@theme {
+  --color-mint-50: #f5faf7;
+  --color-mint-100: #e8f2ec;
+  --color-mint-200: #cfe0d8;
+  --color-mint-300: #b2cfc1;
+  --color-ink: #2e2547;
+  --color-ink-soft: #5c5375;
+  --color-grape: #7c5fb8;
+  --color-grape-dark: #5d4494;
+  --color-bubble: #e06fa4;
+  --color-sun: #e8a23d;
+  --font-display: var(--font-baloo), ui-rounded, system-ui, sans-serif;
+  --font-body: var(--font-nunito), system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-mint-50);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+h1, h2, h3, h4, .display {
+  font-family: var(--font-display);
+}
+
+/* Título estilo "bubble" da marca */
+.bubble-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  -webkit-text-stroke: 1.5px var(--color-ink);
+  paint-order: stroke fill;
+  text-shadow: 3px 3px 0 rgb(46 37 71 / 0.14);
+}
+
+::selection {
+  background: var(--color-grape);
+  color: #fff;
+}
