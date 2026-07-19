@@ -3,51 +3,52 @@
 import Link from "next/link";
 import { useStore } from "@/lib/store-context";
 import { CATEGORIES, formatPrice, type Product } from "@/lib/types";
+import { IconPlus } from "./icons";
 
 export default function ProductCard({ product }: { product: Product }) {
   const { addToCart } = useStore();
   const out = product.stock <= 0;
 
   return (
-    <div className="group relative flex flex-col rounded-3xl bg-white border border-mint-200 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+    <div className="group relative flex flex-col rounded-2xl bg-white border border-ink/10 overflow-hidden transition-all duration-300 hover:border-ink/25 hover:shadow-[0_12px_32px_-12px_rgb(36_29_56_/_0.18)]">
       <Link href={`/produto/${product.id}`} className="relative block aspect-square overflow-hidden bg-mint-100">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={product.image}
           alt={product.name}
           loading="lazy"
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
         />
-        <span className="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/90 backdrop-blur text-[11px] font-extrabold text-grape uppercase tracking-wide">
-          {CATEGORIES[product.category]}
-        </span>
         {product.featured && !out && (
-          <span className="absolute top-3 right-3 px-3 py-1 rounded-full bg-sun text-white text-[11px] font-extrabold">
-            ⭐ Destaque
+          <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-ink text-mint-50 text-[10px] font-extrabold uppercase tracking-[0.14em]">
+            Destaque
           </span>
         )}
         {out && (
-          <span className="absolute inset-0 grid place-items-center bg-ink/50 text-white font-display font-bold text-lg">
+          <span className="absolute inset-0 grid place-items-center bg-ink/55 text-mint-50 font-display font-bold text-lg backdrop-blur-[2px]">
             Esgotado
           </span>
         )}
       </Link>
 
       <div className="flex flex-col grow p-4">
-        <Link href={`/produto/${product.id}`}>
-          <h3 className="font-display font-bold leading-snug group-hover:text-grape transition-colors">
+        <p className="eyebrow text-ink-soft/70 !text-[10px]">{CATEGORIES[product.category]}</p>
+        <Link href={`/produto/${product.id}`} className="mt-1.5">
+          <h3 className="font-display font-bold leading-snug transition-colors group-hover:text-grape">
             {product.name}
           </h3>
         </Link>
-        <p className="mt-1 text-xs text-ink-soft line-clamp-2">{product.description}</p>
         <div className="mt-auto pt-4 flex items-center justify-between gap-2">
-          <span className="font-display font-extrabold text-lg">{formatPrice(product.price)}</span>
+          <span className="font-display font-extrabold text-lg tracking-tight">
+            {formatPrice(product.price)}
+          </span>
           <button
             onClick={() => addToCart(product.id)}
             disabled={out}
-            className="px-4 py-2 rounded-full bg-grape text-white text-sm font-bold hover:bg-grape-dark active:scale-95 transition disabled:opacity-40 disabled:pointer-events-none"
+            aria-label={`Adicionar ${product.name} ao carrinho`}
+            className="grid place-items-center w-10 h-10 rounded-full border border-ink/15 text-ink transition-all hover:bg-ink hover:text-mint-50 active:scale-90 disabled:opacity-30 disabled:pointer-events-none"
           >
-            + Carrinho
+            <IconPlus width={16} height={16} />
           </button>
         </div>
       </div>

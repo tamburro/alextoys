@@ -20,10 +20,10 @@ export default function ProdutoPage() {
 
   if (!product) {
     return (
-      <div className="py-32 text-center">
-        <p className="text-6xl">🔍</p>
-        <p className="font-display font-bold text-2xl mt-4">Brinquedo não encontrado</p>
-        <Link href="/produtos" className="inline-block mt-6 px-6 py-3 rounded-full bg-grape text-white font-bold">
+      <div className="py-32 text-center px-4">
+        <p className="font-display font-extrabold text-3xl">Brinquedo não encontrado</p>
+        <p className="text-ink-soft mt-2 text-sm">Ele pode ter saído do catálogo.</p>
+        <Link href="/produtos" className="inline-block mt-8 px-7 py-3.5 rounded-full bg-ink text-mint-50 font-display font-bold hover:bg-grape transition-colors">
           Ver todos os brinquedos
         </Link>
       </div>
@@ -52,18 +52,18 @@ export default function ProdutoPage() {
       </nav>
 
       <div className="mt-8 grid gap-10 lg:grid-cols-2">
-        <div className="relative rounded-[2rem] overflow-hidden bg-mint-100 border border-mint-200">
+        <div className="relative rounded-[2rem] overflow-hidden bg-mint-100 border border-ink/10">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={product.image} alt={product.name} className="w-full aspect-square object-cover" />
           {product.featured && (
-            <span className="absolute top-4 left-4 px-4 py-1.5 rounded-full bg-sun text-white text-sm font-extrabold">
-              ⭐ Destaque
+            <span className="absolute top-4 left-4 px-3 py-1.5 rounded-full bg-ink text-mint-50 text-[11px] font-extrabold uppercase tracking-[0.14em]">
+              Destaque
             </span>
           )}
         </div>
 
         <div className="flex flex-col">
-          <span className="self-start px-4 py-1.5 rounded-full bg-mint-200/60 text-sm font-extrabold text-grape uppercase tracking-wide">
+          <span className="self-start px-4 py-1.5 rounded-full text-[11px] font-extrabold text-grape uppercase tracking-[0.18em] border border-grape/30">
             {CATEGORIES[product.category]}
           </span>
           <h1 className="font-display font-extrabold text-3xl sm:text-4xl mt-4">{product.name}</h1>
@@ -78,18 +78,18 @@ export default function ProdutoPage() {
 
           {!out && (
             <div className="mt-8 flex flex-wrap items-center gap-4">
-              <div className="flex items-center rounded-full border-2 border-mint-200 overflow-hidden">
+              <div className="flex items-center rounded-full border border-ink/15 overflow-hidden">
                 <button onClick={() => setQty(Math.max(1, qty - 1))} className="px-4 py-3 font-bold hover:bg-mint-100">−</button>
                 <span className="w-10 text-center font-display font-bold">{qty}</span>
                 <button onClick={() => setQty(Math.min(product.stock, qty + 1))} className="px-4 py-3 font-bold hover:bg-mint-100">+</button>
               </div>
               <button
                 onClick={handleAdd}
-                className={`grow sm:grow-0 px-8 py-4 rounded-full font-display font-bold text-lg text-white transition ${
-                  added ? "bg-emerald-500" : "bg-grape hover:bg-grape-dark shadow-xl shadow-grape/25"
+                className={`grow sm:grow-0 px-8 py-4 rounded-full font-display font-bold text-lg text-mint-50 transition-colors ${
+                  added ? "bg-emerald-600" : "bg-ink hover:bg-grape"
                 }`}
               >
-                {added ? "✓ Adicionado!" : "Adicionar ao carrinho"}
+                {added ? "Adicionado" : "Adicionar ao carrinho"}
               </button>
             </div>
           )}
@@ -99,7 +99,7 @@ export default function ProdutoPage() {
             disabled={out}
             className="mt-4 self-start text-sm font-bold text-ink-soft hover:text-grape disabled:opacity-40"
           >
-            Comprar agora →
+            Comprar agora
           </button>
         </div>
       </div>

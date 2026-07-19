@@ -62,7 +62,7 @@ function ProductsAdmin() {
   }
 
   function save() {
-    if (!form.name.trim()) return alert("Dê um nome ao brinquedo 🙂");
+    if (!form.name.trim()) return alert("Dê um nome ao brinquedo.");
     const price = parsePriceBRL(form.priceBRL);
     if (price <= 0) return alert("Informe um preço válido, ex: 49,90");
     const image =
@@ -99,9 +99,9 @@ function ProductsAdmin() {
         </div>
         <button
           onClick={openNew}
-          className="px-6 py-3 rounded-full bg-grape text-white font-display font-bold shadow-lg shadow-grape/25 hover:bg-grape-dark transition"
+          className="px-6 py-3 rounded-full bg-ink text-mint-50 font-display font-bold hover:bg-grape transition-colors"
         >
-          + Adicionar brinquedo
+          Adicionar brinquedo
         </button>
       </div>
 
@@ -109,18 +109,18 @@ function ProductsAdmin() {
         value={q}
         onChange={(e) => setQ(e.target.value)}
         placeholder="Buscar produto…"
-        className="mt-6 w-full sm:w-72 px-4 py-2.5 rounded-full bg-white border border-mint-200 text-sm outline-none focus:border-grape"
+        className="mt-6 w-full sm:w-72 px-4 py-2.5 rounded-full bg-white border border-ink/10 text-sm outline-none focus:border-grape"
       />
 
       {/* Lista */}
       <div className="mt-6 space-y-3">
         {list.map((p) => (
-          <div key={p.id} className="flex items-center gap-4 rounded-3xl bg-white border border-mint-200 p-3 sm:p-4">
+          <div key={p.id} className="flex items-center gap-4 rounded-3xl bg-white border border-ink/10 p-3 sm:p-4">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={p.image} alt={p.name} className="w-16 h-16 rounded-2xl object-cover bg-mint-100 shrink-0" />
             <div className="grow min-w-0">
               <p className="font-display font-bold truncate">
-                {p.name} {p.featured && <span title="Destaque">⭐</span>}
+                {p.name}{p.featured && <span className="ml-2 align-middle inline-block px-2 py-0.5 rounded-full bg-ink text-mint-50 text-[9px] font-extrabold uppercase tracking-[0.14em]">Destaque</span>}
               </p>
               <p className="text-xs text-ink-soft">
                 {CATEGORIES[p.category]} · {formatPrice(p.price)} ·{" "}
@@ -197,7 +197,7 @@ function ProductsAdmin() {
                   onChange={(e) => setForm({ ...form, featured: e.target.checked })}
                   className="w-5 h-5 accent-grape"
                 />
-                ⭐ Mostrar como destaque na página inicial
+                Mostrar como destaque na página inicial
               </label>
             </div>
 
@@ -217,7 +217,7 @@ function ProductsAdmin() {
 }
 
 const inp =
-  "w-full px-4 py-3 rounded-2xl bg-mint-50 border border-mint-200 text-sm outline-none focus:border-grape focus:bg-white transition";
+  "w-full px-4 py-3 rounded-2xl bg-mint-50 border border-ink/10 text-sm outline-none focus:border-grape focus:bg-white transition";
 
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (

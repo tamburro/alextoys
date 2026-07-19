@@ -1,5 +1,7 @@
 "use client";
 
+import { IconPackage } from "@/components/icons";
+
 export default function PedidosPage() {
   return (
     <div>
@@ -8,9 +10,11 @@ export default function PedidosPage() {
         Acompanhe aqui os pedidos da sua loja.
       </p>
 
-      <div className="mt-10 rounded-[2rem] bg-white border border-mint-200 p-12 text-center">
-        <p className="text-6xl">📦</p>
-        <h2 className="font-display font-bold text-xl mt-4">
+      <div className="mt-10 rounded-3xl bg-white border border-ink/10 p-12 text-center">
+        <span className="inline-grid place-items-center w-14 h-14 rounded-full bg-mint-100 text-grape">
+          <IconPackage width={26} height={26} />
+        </span>
+        <h2 className="font-display font-bold text-xl mt-5">
           Os pedidos chegam pelo WhatsApp
         </h2>
         <p className="text-ink-soft text-sm mt-2 max-w-md mx-auto">

@@ -1,17 +1,17 @@
 @import "tailwindcss";
 
 @theme {
-  --color-mint-50: #f5faf7;
-  --color-mint-100: #e8f2ec;
+  --color-mint-50: #f4f8f5;
+  --color-mint-100: #e9f1eb;
   --color-mint-200: #cfe0d8;
   --color-mint-300: #b2cfc1;
-  --color-ink: #2e2547;
-  --color-ink-soft: #5c5375;
-  --color-grape: #7c5fb8;
-  --color-grape-dark: #5d4494;
-  --color-bubble: #e06fa4;
-  --color-sun: #e8a23d;
-  --font-display: var(--font-baloo), ui-rounded, system-ui, sans-serif;
+  --color-ink: #241d38;
+  --color-ink-soft: #6b6482;
+  --color-grape: #6d4fb0;
+  --color-grape-dark: #543c8c;
+  --color-bubble: #d95f96;
+  --color-sun: #d99328;
+  --font-display: var(--font-baloo), system-ui, sans-serif;
   --font-body: var(--font-nunito), system-ui, sans-serif;
 }
 
@@ -23,23 +23,45 @@ body {
   background: var(--color-mint-50);
   color: var(--color-ink);
   font-family: var(--font-body);
+  font-feature-settings: "ss01";
 }
 
 h1, h2, h3, h4, .display {
   font-family: var(--font-display);
 }
 
-/* Título estilo "bubble" da marca */
-.bubble-title {
-  font-family: var(--font-display);
-  font-weight: 800;
-  letter-spacing: 0.01em;
-  -webkit-text-stroke: 1.5px var(--color-ink);
-  paint-order: stroke fill;
-  text-shadow: 3px 3px 0 rgb(46 37 71 / 0.14);
+::selection {
+  background: var(--color-ink);
+  color: var(--color-mint-50);
 }
 
-::selection {
-  background: var(--color-grape);
-  color: #fff;
+/* Marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+
+/* Rótulo editorial */
+.eyebrow {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/* Sublinhado de link editorial */
+.link-line {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1.5px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.3s ease;
+}
+.link-line:hover {
+  background-size: 100% 1.5px;
 }

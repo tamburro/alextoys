@@ -29,7 +29,7 @@ export default function ConfiguracoesPage() {
       <h1 className="font-display font-extrabold text-3xl">Configurações</h1>
       <p className="text-ink-soft mt-1 text-sm">Dados da sua loja, do seu jeito.</p>
 
-      <div className="mt-8 max-w-lg rounded-[2rem] bg-white border border-mint-200 p-6 sm:p-8 space-y-4">
+      <div className="mt-8 max-w-lg rounded-[2rem] bg-white border border-ink/10 p-6 sm:p-8 space-y-4">
         <Field label="Nome da loja">
           <input className={inp} value={form.storeName} onChange={(e) => setForm({ ...form, storeName: e.target.value })} />
         </Field>
@@ -45,22 +45,22 @@ export default function ConfiguracoesPage() {
 
         <button
           onClick={handleSave}
-          className={`w-full px-6 py-3.5 rounded-full font-display font-bold text-white transition ${
-            saved ? "bg-emerald-500" : "bg-grape hover:bg-grape-dark"
+          className={`w-full px-6 py-3.5 rounded-full font-display font-bold text-mint-50 transition-colors ${
+            saved ? "bg-emerald-600" : "bg-ink hover:bg-grape"
           }`}
         >
-          {saved ? "✓ Salvo!" : "Salvar configurações"}
+          {saved ? "Salvo" : "Salvar configurações"}
         </button>
       </div>
 
-      <div className="mt-6 max-w-lg rounded-[2rem] bg-white border border-mint-200 p-6 sm:p-8">
+      <div className="mt-6 max-w-lg rounded-[2rem] bg-white border border-ink/10 p-6 sm:p-8">
         <h2 className="font-display font-bold text-lg">Conta e segurança</h2>
         <p className="text-sm text-ink-soft mt-1">
           Em breve o painel será protegido por login com Google.
         </p>
         <button
           onClick={signInWithGoogle}
-          className="mt-4 w-full px-6 py-3.5 rounded-full border-2 border-mint-200 font-bold text-sm hover:border-grape transition"
+          className="mt-4 w-full px-6 py-3.5 rounded-full border border-ink/15 font-bold text-sm hover:border-ink transition-colors"
         >
           Conectar conta Google (em breve)
         </button>
@@ -70,7 +70,7 @@ export default function ConfiguracoesPage() {
 }
 
 const inp =
-  "w-full px-4 py-3 rounded-2xl bg-mint-50 border border-mint-200 text-sm outline-none focus:border-grape focus:bg-white transition";
+  "w-full px-4 py-3 rounded-2xl bg-mint-50 border border-ink/10 text-sm outline-none focus:border-grape focus:bg-white transition";
 
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (

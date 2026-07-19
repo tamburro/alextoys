@@ -40,7 +40,7 @@ function Catalog() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
-      <h1 className="font-display font-extrabold text-4xl">Todos os brinquedos</h1>
+      <h1 className="font-display font-extrabold text-4xl sm:text-5xl tracking-tight">Todos os brinquedos</h1>
       <p className="text-ink-soft mt-1">
         {list.length} {list.length === 1 ? "item encontrado" : "itens encontrados"}
       </p>
@@ -52,10 +52,10 @@ function Catalog() {
             <button
               key={c}
               onClick={() => setCat(c)}
-              className={`px-4 py-2 rounded-full text-sm font-bold transition ${
+              className={`px-4 py-2 rounded-full text-sm font-bold transition-colors ${
                 cat === c
-                  ? "bg-grape text-white shadow-lg shadow-grape/25"
-                  : "bg-white border border-mint-200 text-ink-soft hover:border-grape"
+                  ? "bg-ink text-mint-50"
+                  : "bg-white border border-ink/15 text-ink-soft hover:border-ink hover:text-ink"
               }`}
             >
               {c === "todos" ? "Todos" : CATEGORIES[c as Category]}
@@ -67,12 +67,12 @@ function Catalog() {
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder="Buscar brinquedo…"
-            className="w-full lg:w-56 px-4 py-2 rounded-full bg-white border border-mint-200 text-sm outline-none focus:border-grape"
+            className="w-full lg:w-56 px-4 py-2 rounded-full bg-white border border-ink/15 text-sm outline-none focus:border-ink"
           />
           <select
             value={sort}
             onChange={(e) => setSort(e.target.value as Sort)}
-            className="px-4 py-2 rounded-full bg-white border border-mint-200 text-sm font-bold outline-none focus:border-grape"
+            className="px-4 py-2 rounded-full bg-white border border-ink/15 text-sm font-bold outline-none focus:border-ink"
           >
             <option value="recentes">Mais recentes</option>
             <option value="menor-preco">Menor preço</option>
@@ -84,10 +84,9 @@ function Catalog() {
 
       {/* Grade */}
       {list.length === 0 ? (
-        <div className="mt-16 text-center">
-          <p className="text-6xl">🧸</p>
-          <p className="font-display font-bold text-xl mt-4">Nenhum brinquedo encontrado</p>
-          <p className="text-ink-soft text-sm mt-1">Tente outra busca ou categoria.</p>
+        <div className="mt-20 border border-dashed border-ink/20 rounded-3xl py-20 text-center">
+          <p className="font-display font-extrabold text-2xl">Nenhum brinquedo encontrado</p>
+          <p className="text-ink-soft text-sm mt-2">Tente outra busca ou categoria.</p>
         </div>
       ) : (
         <div className="mt-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
