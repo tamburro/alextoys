@@ -31,6 +31,21 @@
     noscript .ns-scene { max-width: 900px; margin: 0 auto 48px; padding: 0 20px; text-align: center; }
     noscript .ns-scene img { max-width: 100%; border-radius: 16px; }
     noscript h2 { font-family: var(--sw-font-display); color: var(--sw-ink); }
+
+    /* Legibilidade: hint com fundo pílula (some por cima da imagem sem isso) */
+    .sw-hint {
+      color: var(--sw-ink) !important;
+      background: color-mix(in srgb, #fff 80%, transparent);
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+      padding: 10px 18px 12px;
+      border-radius: 18px;
+      box-shadow: 0 6px 20px rgba(46, 37, 71, .18);
+    }
+    .sw-hint i { border-color: color-mix(in srgb, var(--sw-ink) 55%, transparent) !important; }
+    /* Reforço de contraste da copy sobre cenas claras */
+    .sw-copy__title { text-shadow: 0 2px 24px rgba(207, 224, 216, .95), 0 1px 3px rgba(46, 37, 71, .25) !important; }
+    .sw-copy__body { text-shadow: 0 1px 16px rgba(207, 224, 216, .98) !important; }
   </style>
 </head>
 <body>
