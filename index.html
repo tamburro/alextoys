@@ -24,47 +24,74 @@
   <meta name="twitter:description" content="Brinquedos clássicos e modernos pra você mergulhar na nostalgia e dar upgrade na sua coleção." />
   <meta name="twitter:image" content="https://alextoys.vercel.app/assets/og-image.jpg" />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root, .sw-root {
-      --sw-bg: #cfe0d8;
-      --sw-ink: #2e2547;
-      --sw-ink-soft: #5c5375;
-      --sw-accent: #7c5fb8;
-      --sw-font-display: ui-rounded, "SF Pro Rounded", "Arial Rounded MT Bold", "Segoe UI", system-ui, sans-serif;
+      --sw-bg: #cfe0d8;                 /* casa com o fundo das cenas */
+      --sw-ink: #241d38;
+      --sw-ink-soft: #5f5878;
+      --sw-accent: #6d4fb0;
+      --sw-font-display: "Bricolage Grotesque", system-ui, sans-serif;
+      --sw-font-body: "Nunito", system-ui, sans-serif;
     }
-    /* Tipografia "bubble": arredondada, pesada, com contorno escuro */
-    .sw-copy__title {
-      font-weight: 800;
-      -webkit-text-stroke: 1.5px #2e2547;
-      paint-order: stroke fill;
-      text-shadow: 3px 3px 0 rgba(46, 37, 71, .18);
-      letter-spacing: .01em;
-    }
-    .sw-copy__eyebrow { font-weight: 800; }
-    .sw-brand__name {
-      font-weight: 800;
-      font-size: 1.25rem;
-      -webkit-text-stroke: .8px #2e2547;
-      paint-order: stroke fill;
-    }
-    noscript .ns-scene { max-width: 900px; margin: 0 auto 48px; padding: 0 20px; text-align: center; }
-    noscript .ns-scene img { max-width: 100%; border-radius: 16px; }
-    noscript h2 { font-family: var(--sw-font-display); color: var(--sw-ink); }
 
-    /* Legibilidade: hint com fundo pílula (some por cima da imagem sem isso) */
+    /* Tipografia editorial (padrão da loja) */
+    .sw-copy__title {
+      font-weight: 800 !important;
+      letter-spacing: -0.015em !important;
+    }
+    .sw-copy__eyebrow { font-weight: 800 !important; letter-spacing: 0.2em !important; }
+    .sw-brand__name { font-family: var(--sw-font-display); font-weight: 800; font-size: 1.15rem; letter-spacing: -0.01em; }
+
+    /* LEGIBILIDADE: scrim mais forte atrás da copy */
+    .sw-copylayer::before {
+      width: min(64vw, 880px) !important;
+      background: linear-gradient(90deg,
+        var(--sw-bg) 0%,
+        color-mix(in srgb, var(--sw-bg) 92%, transparent) 30%,
+        color-mix(in srgb, var(--sw-bg) 55%, transparent) 62%,
+        transparent 100%) !important;
+    }
+    .sw-copy__title {
+      text-shadow: 0 0 28px rgba(207, 224, 216, 0.95), 0 1px 2px rgba(36, 29, 56, 0.12) !important;
+    }
+    .sw-copy__body {
+      color: var(--sw-ink) !important;
+      font-weight: 600;
+      text-shadow: 0 0 18px rgba(207, 224, 216, 0.98) !important;
+    }
+    @media (max-width: 720px) {
+      .sw-copylayer::before {
+        width: 100% !important;
+        background: linear-gradient(0deg,
+          var(--sw-bg) 14%,
+          color-mix(in srgb, var(--sw-bg) 82%, transparent) 52%,
+          transparent 100%) !important;
+      }
+    }
+
+    /* Hint com pílula legível sobre qualquer cena */
     .sw-hint {
       color: var(--sw-ink) !important;
-      background: color-mix(in srgb, #fff 80%, transparent);
+      font-weight: 800;
+      background: color-mix(in srgb, #fff 85%, transparent);
       -webkit-backdrop-filter: blur(8px);
       backdrop-filter: blur(8px);
       padding: 10px 18px 12px;
-      border-radius: 18px;
-      box-shadow: 0 6px 20px rgba(46, 37, 71, .18);
+      border-radius: 16px;
+      border: 1px solid color-mix(in srgb, var(--sw-ink) 12%, transparent);
     }
-    .sw-hint i { border-color: color-mix(in srgb, var(--sw-ink) 55%, transparent) !important; }
-    /* Reforço de contraste da copy sobre cenas claras */
-    .sw-copy__title { text-shadow: 0 2px 24px rgba(207, 224, 216, .95), 0 1px 3px rgba(46, 37, 71, .25) !important; }
-    .sw-copy__body { text-shadow: 0 1px 16px rgba(207, 224, 216, .98) !important; }
+    .sw-hint i { border-color: color-mix(in srgb, var(--sw-ink) 45%, transparent) !important; }
+
+    /* Botões no padrão da loja */
+    .sw-btn--primary:hover { background: var(--sw-accent) !important; }
+    .sw-topcta:hover { background: var(--sw-accent); }
+
+    noscript .ns-scene { max-width: 900px; margin: 0 auto 48px; padding: 0 20px; text-align: center; }
+    noscript .ns-scene img { max-width: 100%; border-radius: 16px; }
+    noscript h2 { font-family: var(--sw-font-display); color: var(--sw-ink); }
   </style>
 </head>
 <body>
@@ -91,7 +118,7 @@
           id: 'hero', label: 'A Loja',
           still: 'assets/scene_1.webp',
           clip: 'assets/vid/leg_1.mp4',
-          accent: '#7c5fb8',
+          accent: '#6d4fb0',
           scroll: 1.6, linger: 0.4,
           eyebrow: 'Alex Toys!',
           title: 'Um mundo de brinquedos',
@@ -102,7 +129,7 @@
           id: 'classicos', label: 'Clássicos',
           still: 'assets/scene_2.webp',
           clip: 'assets/vid/leg_2.mp4',
-          accent: '#e8a23d',
+          accent: '#d99328',
           eyebrow: 'Nostalgia de verdade',
           title: 'Clássicos que marcaram gerações',
           body: 'Brinquedos clássicos que marcaram gerações — do carrinho de lata ao pelúcia vintage.',
@@ -112,7 +139,7 @@
           id: 'modernos', label: 'Modernos',
           still: 'assets/scene_3.webp',
           clip: 'assets/vid/leg_3.mp4',
-          accent: '#e06fa4',
+          accent: '#d95f96',
           eyebrow: 'Novidades e colecionáveis',
           title: 'O item que faltava na sua coleção',
           body: 'Lançamentos, peças raras e aquele item que faltava pra dar upgrade na sua coleção.',
@@ -122,7 +149,7 @@
           id: 'cta', label: 'Fale Conosco',
           still: 'assets/scene_4.webp',
           clip: 'assets/vid/leg_4.mp4',
-          accent: '#7c5fb8',
+          accent: '#6d4fb0',
           scroll: 1.6, linger: 0.45,
           eyebrow: 'Chegou a sua vez',
           title: 'Comece sua coleção hoje',
